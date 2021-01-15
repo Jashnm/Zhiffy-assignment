@@ -9,7 +9,7 @@ Bootstraped from `create-next-app`
 ```bash
 npm i
 # or
-yarn add
+yarn install
 ```
 
 3. Run the development server(make sure npm/yarn in installed):
