@@ -4,7 +4,15 @@ Bootstraped from `create-next-app`
 
 1. Make a clone of the repo
 
-2. Run the development server(make sure npm/yarn in installed):
+2. Install all the dependencies using
+
+```bash
+npm i
+# or
+yarn add
+```
+
+3. Run the development server(make sure npm/yarn in installed):
 
 ```bash
 npm run dev
@@ -12,7 +20,7 @@ npm run dev
 yarn dev
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000) and check the website (make sure server is running.)
+4. Open [http://localhost:3000](http://localhost:3000) and check the website (make sure server is running.)
 
 ---
 
