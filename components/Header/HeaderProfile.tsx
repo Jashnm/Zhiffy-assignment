@@ -45,20 +45,36 @@ const HeaderProfile = () => {
 
   return (
     <>
-      <HStack spacing="30px">
-        <Box h="40px">
-          <Button
-            aria-label="location"
+      {loggedIn && (
+        <HStack spacing="30px">
+          <Box h="40px">
+            <Button
+              aria-label="location"
+              variant="ghost"
+              _hover={{ bgColor: "gray.600" }}
+              leftIcon={<IoLocationSharp />}
+            >
+              Jaipur
+            </Button>
+          </Box>
+
+          <IconButton
+            aria-label="likes"
+            fontSize="24px"
             variant="ghost"
-            _hover={{ bgColor: "gray.600" }}
-            leftIcon={<IoLocationSharp />}
-          >
-            Jaipur
-          </Button>
-        </Box>
-        <Box h="40px">
-          <Menu>
-            {loggedIn && (
+            _hover={{ color: "gray.700", bgColor: "white" }}
+            icon={<IoHeart />}
+          />
+          <IconButton
+            aria-label="chat"
+            fontSize="24px"
+            variant="ghost"
+            _hover={{ color: "gray.700", bgColor: "white" }}
+            icon={<IoChatbubble />}
+          />
+
+          <Box h="40px">
+            <Menu>
               <Avatar
                 borderRadius="100%"
                 bgColor="transparent"
@@ -66,43 +82,28 @@ const HeaderProfile = () => {
                 name={user.name}
                 src={`http://localhost:5000/${user.img}`}
               />
-            )}
 
-            <MenuList color="gray.800">
-              <MenuItem>
-                <Link href="/profile">
-                  <a>My Profile</a>
-                </Link>
-              </MenuItem>
-              <MenuItem
-                as={Button}
-                variant="ghost"
-                onClick={() => {
-                  dispatch({ type: LOGOUT });
-                  router.push("/login");
-                }}
-              >
-                Log Out{" "}
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        </Box>
-
-        <IconButton
-          aria-label="likes"
-          fontSize="24px"
-          variant="ghost"
-          _hover={{ color: "gray.700", bgColor: "white" }}
-          icon={<IoHeart />}
-        />
-        <IconButton
-          aria-label="chat"
-          fontSize="24px"
-          variant="ghost"
-          _hover={{ color: "gray.700", bgColor: "white" }}
-          icon={<IoChatbubble />}
-        />
-      </HStack>
+              <MenuList color="gray.800">
+                <MenuItem>
+                  <Link href="/profile">
+                    <a>My Profile</a>
+                  </Link>
+                </MenuItem>
+                <MenuItem
+                  as={Button}
+                  variant="ghost"
+                  onClick={() => {
+                    dispatch({ type: LOGOUT });
+                    router.push("/login");
+                  }}
+                >
+                  Log Out{" "}
+                </MenuItem>
+              </MenuList>
+            </Menu>
+          </Box>
+        </HStack>
+      )}
     </>
   );
 };

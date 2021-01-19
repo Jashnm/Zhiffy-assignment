@@ -3,7 +3,7 @@ import Link from "next/link";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
-import { motion } from "framer-motion";
+
 import { useState } from "react";
 
 dayjs.extend(relativeTime);
@@ -18,16 +18,13 @@ interface ICarouselItem {
   };
 }
 
-const MotionFlex = motion.custom(Flex);
-
 const CarouselItem: React.FC<ICarouselItem> = ({
   product: { name, img, createdAt, title, price }
 }) => {
   const [like, setLike] = useState(false);
   return (
     <Box my="2rem" style={{ textAlign: "-webkit-center" }}>
-      <MotionFlex
-        whileHover={{ scale: 1.05 }}
+      <Flex
         justify="center"
         align="center"
         maxW="260px"
@@ -37,8 +34,13 @@ const CarouselItem: React.FC<ICarouselItem> = ({
         borderWidth="1px"
         boxShadow="sm"
         rounded="sm"
+        transition="0.2s ease-in-out"
         isTruncated
-        _hover={{ boxShadow: "2xl", borderWidth: "0" }}
+        _hover={{
+          boxShadow: "2xl",
+          borderWidth: "0",
+          transform: "scale(1.05)"
+        }}
       >
         <Flex justify="space-between" w="100%">
           <Avatar name={name} src="" size="sm" />
@@ -74,7 +76,7 @@ const CarouselItem: React.FC<ICarouselItem> = ({
           </Link>
         </Text>
         <Text>₹ {price}</Text>
-      </MotionFlex>
+      </Flex>
     </Box>
   );
 };

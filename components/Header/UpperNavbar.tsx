@@ -28,14 +28,14 @@ const UpperNavbar = () => {
         align="center"
         justify="space-between"
         wrap="wrap"
-        px={["1rem", "1.5rem"]}
+        px={["1rem", "2rem"]}
         py={["0.2rem", "0.4rem"]}
         background="gray.700"
         color="white"
         m="auto"
         w="100%"
         top="0"
-        maxH="10rem"
+        minH="4rem"
         borderBottom="1px"
         borderBottomColor="gray.100"
         position="static"

@@ -4,8 +4,12 @@ import {
   Flex,
   IconButton,
   Image,
+  Input,
+  InputGroup,
+  InputLeftElement,
   List,
-  ListItem
+  ListItem,
+  useMediaQuery
 } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
@@ -14,11 +18,11 @@ import { GiShoppingCart } from "react-icons/gi";
 import { LOGOUT } from "../../constants";
 import { useAuthDispatch, useAuthState } from "../../context/userContext";
 import UpperNavbar from "./UpperNavbar";
+import { SearchIcon } from "@chakra-ui/icons";
 
 const Navbar = () => {
   const { loggedIn } = useAuthState();
-  const dispatch = useAuthDispatch();
-  const router = useRouter();
+  const [isLargerThan480] = useMediaQuery("(min-width: 480px)");
 
   return (
     <>
@@ -28,7 +32,7 @@ const Navbar = () => {
         align="center"
         justify="space-between"
         wrap="wrap"
-        px={["1rem", "2rem"]}
+        px={["1rem", "1.5rem", "3rem"]}
         py={["0.1rem", "0.2rem"]}
         background="white"
         color="white"
@@ -50,7 +54,25 @@ const Navbar = () => {
             />
           </a>
         </Link>
-
+        {isLargerThan480 && (
+          <Flex
+            align="center"
+            mx="auto"
+            w={["80px", "360px", "480px"]}
+            bgColor="gray.100"
+            borderWidth="1px"
+            rounded="sm"
+            _hover={{ borderColor: "main.400", bgColor: "white" }}
+          >
+            <InputGroup>
+              <InputLeftElement
+                pointerEvents="none"
+                children={<SearchIcon color="gray.300" />}
+              />
+              <Input type="text" placeholder="Search" color="gray.800" />
+            </InputGroup>
+          </Flex>
+        )}
         <List
           maxW="260px"
           w="100%"
@@ -67,7 +89,11 @@ const Navbar = () => {
               <ListItem>
                 <Link href="/">
                   <a>
-                    <Button variant="ghost" leftIcon={<IoWalletOutline />}>
+                    <Button
+                      fontSize="lg"
+                      variant="ghost"
+                      leftIcon={<IoWalletOutline />}
+                    >
                       Balance
                     </Button>
                   </a>
@@ -77,7 +103,7 @@ const Navbar = () => {
                 <Link href="/">
                   <a>
                     <IconButton
-                      fontSize="1.8rem"
+                      fontSize="2rem"
                       variant="ghost"
                       mr="2"
                       fontWeight="semibold"
@@ -88,13 +114,7 @@ const Navbar = () => {
                 </Link>
               </ListItem>
               <ListItem mt="0 !important">
-                <Button
-                  colorScheme="main"
-                  onClick={() => {
-                    dispatch({ type: LOGOUT });
-                    router.push("/login");
-                  }}
-                >
+                <Button colorScheme="main" fontSize="lg">
                   Sell
                 </Button>
               </ListItem>
