@@ -25,7 +25,7 @@ const CarouselItem: React.FC<ICarouselItem> = ({
 }) => {
   const [like, setLike] = useState(false);
   return (
-    <Box my="2rem">
+    <Box my="2rem" style={{ textAlign: "-webkit-center" }}>
       <MotionFlex
         whileHover={{ scale: 1.05 }}
         justify="center"
