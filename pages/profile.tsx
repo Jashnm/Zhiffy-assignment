@@ -17,6 +17,7 @@ const profile = () => {
   const dispatch = useAuthDispatch();
   const { email, user, loggedIn } = useAuthState();
   const router = useRouter();
+
   useEffect(() => {
     if (loggedIn) {
       const getUser = async () => {
@@ -53,7 +54,11 @@ const profile = () => {
             borderRightColor={["", "", "gray.100"]}
             px="2"
           >
-            <Avatar size="2xl" src={user.img} name={user.name} />
+            <Avatar
+              size="2xl"
+              src={`http://localhost:5000/${user.img}`}
+              name={user.name}
+            />
           </Box>
           <Box px="2" ml={["0", "2"]} mt={["5", "2"]}>
             <VStack

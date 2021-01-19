@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import ProductBox from "../components/ProductBox";
 import { useAuthState } from "../context/userContext";
 
-const productsList = [
+export const productsList = [
   {
     imageUrl:
       "https://cdn.shopify.com/s/files/1/1935/4371/products/050234107518_CPC_1100_GPS_1_570x380.jpg?v=1529944003",

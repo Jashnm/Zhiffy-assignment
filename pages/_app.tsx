@@ -1,6 +1,6 @@
 import type { AppProps /*, AppContext */ } from "next/app";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Header/Navbar";
 import { useRouter } from "next/dist/client/router";
 import { AuthProvider } from "../context/userContext";
 
@@ -22,6 +22,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         800: "#172b5d",
         900: "#0c152e"
       }
+    },
+    fonts: {
+      body: "'Poppins', sans-serif"
     }
   });
 

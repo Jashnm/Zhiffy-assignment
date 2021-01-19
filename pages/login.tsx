@@ -21,7 +21,6 @@ const schema = Joi.object({
 const login = () => {
   const router = useRouter();
   const [credError, setCredError] = useState();
-  const { email, loggedIn } = useAuthState();
   const dispatch = useAuthDispatch();
   const { register, handleSubmit, errors } = useForm({
     mode: "onBlur",
@@ -41,7 +40,7 @@ const login = () => {
           type: LOGIN,
           payload: { email, loggedIn: res.data.success }
         });
-        router.push("/products");
+        router.push("/");
       } else {
         setCredError(res.data.msg);
       }
